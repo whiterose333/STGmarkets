@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <title>prueba Cappa</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajx/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href='#' class="toggle-button" id="toggle">
+            <span class="bar" id="
+            bar"></span>
+            <span class="bar" id="bar"></span>
+            <span class="bar" id="bar"></span>
+        </a>
+        <div class="brand-title">STG Markets</div>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="form.html">Registro</a></li>
+                <li><a href="calculadora.html">Calculadora</a></li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <!-- CARRUSEL -->
+    <div class="container">
+        <ul class="slider">
+            <li id="slide1">
+                <img src="images/banner4.jpg" alt="">
+                <h2 class="titulo">acciones</h2>
+                <p class="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum corporis incidunt voluptas quos nihil eaque odit dolor. Sequi unde optio, aliquid, cum dignissimos vel nihil nobis dolores deleniti illo porro.</p>
+                
+            </li>
+            <li id="slide2">
+                <img src="images/banner5.jpg" alt="">
+                <h2 class="titulo">acciones</h2>
+                <p class="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum corporis incidunt voluptas quos nihil eaque odit dolor. Sequi unde optio, aliquid, cum dignissimos vel nihil nobis dolores deleniti illo porro.</p>
+            </li>
+            <li id="slide3">
+                <img src="images/banner6.jpg" alt="">
+                <h2 class="titulo">acciones</h2>
+                <p class="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum corporis incidunt voluptas quos nihil eaque odit dolor. Sequi unde optio, aliquid, cum dignissimos vel nihil nobis dolores deleniti illo porro.</p>
+            </li>
+        </ul>
+        <ul class="menu">
+            <li>
+                <a class="btn" href="#slide1">1</a>
+            </li>
+            <li>
+                <a class="btn" href="#slide2">2</a>
+            </li>
+            <li>
+                <a class="btn" href="#slide3">3</a>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- CALCULADORA -->
+    <section class="gridContainer">
+
+        <div class="section">
+            <div class="container-cal">
+                <h1>Calculadora de Movimiento Financiero</h1>
+                <form class="form-reg" id="formulario">
+                    <div class="form-group">
+                        <label class="label" for="balance">Balance de la cuenta:</label>
+                        <input class="input" id="balance" required step="0.01" type="number" />
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="apalancamiento">Apalancamiento:</label>
+                        <input class="input" id="apalancamiento" readonly type="number" value="5" />
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="instrumento">Instrumento:</label>
+                        <input class="input" id="instrumento" readonly type="text" value="APPLE" />
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="valor-fecha1">Valor de la acción 12 de abril 2023:</label>
+                        <input class="input" id="valor-fecha1" readonly step="0.01" type="number" value="160" />
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="valor-fecha2">Valor de la acción 10 de mayo 2023:</label>
+                        <input class="input" id="valor-fecha2" readonly step="0.01" type="number" value="173" />
+                    </div>
+                    <button type="button" onclick="calcularPromedio()">Calcular Promedio de Acciones</button>
+                    <div class="form-group">
+                        <label class="label" for="acciones">Acciones:</label>
+                        <input class="input" id="acciones" readonly step="1" type="number" />
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="unidades">Unidades:</label>
+                        <input class="input" id="unidades" required step="1" type="number" />
+                    </div>
+                    <button type="button" onclick="calcularGanancia()">Calcular Ganancia Potencial</button>
+                    <div id="resultado"></div>
+            </div>
+
+            </form>
+        </div>
+        <div class="imagen">
+            <img class="img" src="images/banner7.jpg" alt="">
+        </div>
+    </section>
+    <script>
+        function calcularPromedio() {
+            var balance = parseFloat(document.getElementById("balance").value);
+            var apalancamiento = parseInt(document.getElementById("apalancamiento").value);
+            var valor_fecha1 = parseFloat(document.getElementById("valor-fecha1").value);
+
+            // Cálculo del promedio de acciones
+            var promedio_acciones = Math.floor(balance * apalancamiento / valor_fecha1);
+
+            // Actualizar el campo de acciones
+            document.getElementById("acciones").value = promedio_acciones;
+        }
+
+        function calcularGanancia() {
+            var valor_fecha1 = parseFloat(document.getElementById("valor-fecha1").value);
+            var valor_fecha2 = parseFloat(document.getElementById("valor-fecha2").value);
+            var unidades = parseInt(document.getElementById("unidades").value);
+
+            // Cálculo de la ganancia potencial
+            var movimiento = (valor_fecha2 - valor_fecha1) * unidades;
+            var ganancia = movimiento > 0 ? movimiento : 0;
+
+            // Mostrar resultados
+            var resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = "Ganancia potencial: $" + ganancia.toFixed(2);
+        }
+    </script>
+
+    <!-- REGISTRO -->
+
+    <!-- <div class="form-reg"> -->
+        <div class="registro">
+            
+            <div class="container-form">
+            <h1>registro</h1>
+            <div class="detail">
+                <label class="label-form">Nombre:</label>
+                <input class="input-form" type="text" name="nombre" />
+
+            </div>
+            <div class="detail">
+                <label class="label-form">Apellido:</label>
+                <input class="input-form" type="text" name="apellido" />
+
+            </div>
+            <div class="detail">
+                <label class="label-form">Email:</label>
+                <input class="input-form" type="mail" name="email" />
+
+            </div>
+            <div class="detail">
+                <label class="label-form">Telefono:</label>
+                <input class="input-form" type="number" name="telefono" />
+
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</body>
+
+</html>
